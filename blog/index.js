@@ -9,10 +9,11 @@ const { StaticApp } = require('@keystonejs/app-static');
 
 const { staticRoute, staticPath, distDir } = require('./config');
 const { User, Post, PostCategory, Comment } = require('./schema');
+const adapterConfig = { mongoUri: 'mongodb+srv://dbUser:dbPassword@cluster0-ahelj.mongodb.net/test' };
 
 const keystone = new Keystone({
   name: 'Keystone Demo Blog',
-  adapter: new MongooseAdapter(),
+  adapter: new MongooseAdapter(adapterConfig),
   onConnect: async () => {
     // Initialise some data.
     // NOTE: This is only for demo purposes and should not be used in production
